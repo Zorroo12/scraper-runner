@@ -1,0 +1,25 @@
+name: Run Scrappers
+
+on:
+  repository_dispatch:
+    types: [run_scrappers]
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        file: [scrapper51.js, scrapper52.js, scrapper53.js, scrapper54.js, scrapper55.js, scrapper56.js, scrapper57.js, scrapper58.js]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm install
+
+      - name: Run Scraper
+        run: node ${{ matrix.file }}
