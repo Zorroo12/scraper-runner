@@ -32,4 +32,3 @@ jobs:
           DRIVE_FOLDER_ID: ${{ secrets.DRIVE_FOLDER_ID }}
         run: |
           node --max-old-space-size=4096 ${{ matrix.file }}
-          node uploadDbOAuth.js
